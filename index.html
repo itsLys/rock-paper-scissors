@@ -10,24 +10,25 @@
 <body>
   <script>
 
-
-
-    const choices = ['rock', 'paper', 'scissors']
     function getComputerChoice() {
-      return (choices[(Math.floor(Math.random() * choices.length))]);
+      const choices = ['rock', 'paper', 'scissors'];
+      let randomChoice = choices[(Math.floor(Math.random() * choices.length))];
+      return randomChoice;
+    } // Randomly chooses
 
-    } /* Randomly chooses 1 of the choices array */
 
-    function playRound(playerSelection, computerSelection) {
+    function playRound() {
+      let playerSelection = prompt('Choose your weapon');
+      let computerSelection = getComputerChoice();
       if ((playerSelection.toLowerCase() === 'rock')
         && (computerSelection === 'paper')) {
-        return ('You loose: paper beats rock!');
+        return ('You Loose: paper beats rock!');
       } else if ((playerSelection.toLowerCase() === 'paper')
         && (computerSelection === 'scissors')) {
-        return ('You loose: scissors beats paper!');
+        return ('You Loose: scissors beats paper!');
       } else if ((playerSelection.toLowerCase() === 'scissors')
         && (computerSelection === 'rock')) {
-        return ('You loose: rock beats scissors!');
+        return ('You Loose: rock beats scissors!');
       } else if ((playerSelection.toLowerCase() === 'paper')
         && (computerSelection === 'rock')) {
         return ('You Win: paper beats rock!');
@@ -36,27 +37,45 @@
         return ('You Win: scissors beats paper!');
       } else if ((playerSelection.toLowerCase() === 'rock')
         && (computerSelection === 'scissors')) {
-        return ('You win: rock beats scissors!');
+        return ('You Win: rock beats scissors!');
       } else if (playerSelection.toLowerCase() == computerSelection) {
         return ('Its a tie!');
       } else {
         return ('Wrong choice, choose correctly')
       }
     }
-    let playerSelection = 'rock';
-    let computerSelection = getComputerChoice();
-    console.log('You choose: ' + playerSelection + ', ' + 'Computer choose: ' + computerSelection)
-    console.log(playRound(playerSelection, computerSelection))
 
-    function game() {
-
+    function playGame() {
+      let p = 0;
+      let c = 0;
+      for (let i = 1; i < 6; i++) {
+        let round = playRound();
+        console.log('Round ' + i);
+        console.log(round);
+        if (round.includes('Wrong') || round.includes('tie')) {
+          i--;
+          console.log('Try again!'); // Checks if the choice is valid or if it is a tie and replays the round
+        } else if (round.includes('Win')) {
+          p++;
+        }
+        else if (round.includes('Loose')) {
+          c++;
+        };
+        console.log('Current Score: ' + 'Player:' + p + ' AI:' + c);
+        if (p == 3 || c == 3) {
+          i = 6;
+        } //Checks if a score is 3 and ends the loop, concludes the game
+      };
+      let winner;
+      if (p > c) {
+        winner = 'GAME OVER: YOU WON!'
+      }
+      else if (c > p) {
+        winner = 'GAME OVER: YOU LOST!'
+      };
+      console.log(winner);
     }
-    //Create a variables for playerSelectrion that gets the user's input as a value
-    //Create a variable for computer selection that gets the computer's random choice
-    // Create a base score of 0 for each player
-    // create a loop that calls the playRound 5 times
-    // Each time of the 5, Add 1 to the score of the the winner
-    // If one of the players reach 5, stop the loop, and display the winner
+    playGame() 
   </script>
 </body>
 
