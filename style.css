@@ -1,12 +1,71 @@
-.game>div {
-  background-color: red;
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-size: 1.5em;
+}
+
+body {
+  background-color: #021f59;
+  color: #04d9d9;
+  font-family: monospace;
+  text-align: center;
+}
+
+body>h1 {
+  margin-top: 4rem;
+  margin-bottom: 6rem;
+}
+
+.game {
+  display: flex;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.game>div>h3 {
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+button,
+.computer-choice {
+  font: inherit;
+  display: inline-block;
+  padding: .5rem 1rem;
+  color: #05c7f2;
+  border: 1px solid;
+  background-color: #03318c;
+  margin-bottom: 1.5rem;
+}
+
+button:hover {
+  background-color: #05c7f2;
+  color: #03318c;
+  ;
+}
+
+button:active {
+  background-color: #a904bf;
 }
 
 .game-over {
-  background-color: lightblue;
+  background-color: #03318c;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 1rem;
   text-align: center;
   height: 100%;
+
+}
+
+.game-over>h1 {
+  margin-bottom: 2rem;
+
 }
 
 .modal-container {
@@ -17,5 +76,5 @@
   right: 0;
   top: 0;
   bottom: 0;
-  padding: 80px;
+  padding: 5rem;
 }
