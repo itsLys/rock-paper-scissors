@@ -10,10 +10,18 @@ const startButton = document.querySelector('.start-button');
 const comChoice = document.querySelector('.computer-choice');
 let p = 0;
 let c = 0;
+comChoice.style.display = 'none'
 function getComputerChoice() {
   const choices = ['rock', 'paper', 'scissors'];
   let randomChoice = choices[(Math.floor(Math.random() * choices.length))];
-  comChoice.textContent = randomChoice;
+  if (randomChoice === 'rock') {
+    comChoice.innerHTML = '<i class="fa-solid fa-hand-back-fist"></i>';
+  } else if (randomChoice === 'paper') {
+    comChoice.innerHTML = '<i class="fa-solid fa-hand"></i>';
+  } else if (randomChoice === 'scissors') {
+    comChoice.innerHTML = '<i class="fa-solid fa-hand-scissors"></i>';
+  }
+  comChoice.style.display = 'inline-block';
   return randomChoice;
 }
 function startGame() {
@@ -53,8 +61,10 @@ function setScore(param) {
 };
 function finishGame() {
   if (score.textContent.includes('PLAYER: 5')) {
+    gameWinner.style.color = '#05c7f2';
     gameWinner.textContent = ' PLAYER WINS!';
   } else if (score.textContent.includes('COMPUTER: 5')) {
+    gameWinner.style.color = '#a904bf'
     gameWinner.textContent = ' COMPUTER WINS!';
   }
 };
