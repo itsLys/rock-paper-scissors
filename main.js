@@ -1,8 +1,4 @@
-function getComputerChoice() {
-  const choices = ['rock', 'paper', 'scissors'];
-  let randomChoice = choices[(Math.floor(Math.random() * choices.length))];
-  return randomChoice;
-}
+
 const btnRock = document.querySelector('.player .rock');
 const btnPaper = document.querySelector('.player .paper');
 const btnScissors = document.querySelector('.player .scissors');
@@ -11,9 +7,15 @@ const roundStatus = document.querySelector('.game-status');
 const gameWinner = document.querySelector('.game-over>h1>span');
 const gameOver = document.querySelector('.modal-container');
 const startButton = document.querySelector('.start-button');
-
+const comChoice = document.querySelector('.computer-choice');
 let p = 0;
 let c = 0;
+function getComputerChoice() {
+  const choices = ['rock', 'paper', 'scissors'];
+  let randomChoice = choices[(Math.floor(Math.random() * choices.length))];
+  comChoice.textContent = randomChoice;
+  return randomChoice;
+}
 function startGame() {
   p = 0;
   c = 0;
@@ -76,10 +78,5 @@ function playRound(playerSelection) {
     return ('win');
   };
 };
-
-
-
-
-
 startButton.addEventListener('click', () => { document.location.reload() });
 startGame();
