@@ -28,7 +28,7 @@ function startGame() {
   p = 0;
   c = 0;
   gameOver.style.display = '';
-  score.textContent = 'PLAYER: ' + p + ' COMPUTER: ' + c;
+  score.textContent = 'PLAYER: ' + p + ` -` + ' COMPUTER: ' + c;
   btnRock.addEventListener('click', (e) => {
     e.preventDefault();
     setScore(playRound('rock'));
@@ -45,10 +45,10 @@ function startGame() {
 }
 function setScore(param) {
   if (param === 'win') {
-    score.textContent = 'PLAYER: ' + ++p + ' COMPUTER: ' + c;
+    score.textContent = 'PLAYER: ' + ++p + ` -` + ' COMPUTER: ' + c;
     roundStatus.textContent = 'ROUND WIN';
   } else if (param === 'loss') {
-    score.textContent = 'PLAYER: ' + p + ' COMPUTER: ' + ++c;
+    score.textContent = 'PLAYER: ' + p + ` -` + ' COMPUTER: ' + ++c;
     roundStatus.textContent = 'ROUND LOSS';
   } else if (param === 'tie') {
     roundStatus.textContent = 'IT\'S A TIE, TRY AGAIN';
